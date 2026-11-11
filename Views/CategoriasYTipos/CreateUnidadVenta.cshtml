@@ -1,0 +1,40 @@
+﻿@model VentasVG.Models.UnidadVenta
+
+@{
+    ViewData["Title"] = "Nueva Unidad de Venta";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-3 shadow-sm p-4 border rounded">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="text-center"> Agregar Nueva Unidad de Venta</h2>
+            </div>
+            <hr />
+            <!--Aqui el formulario dice a donde enviara los datos metodo POST-->
+            <form asp-action="CreateUnidadVenta">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="TipoUnidad" class="form-label">Nombre de la Unidad de Venta</label>
+                    <input asp-for="TipoUnidad" class="form-control" placeholder="EJ: Orden/Pieza" />
+                    <span asp-validation-for="TipoUnidad" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <button type="submit" class="btn btn-success">Agregar Unidad de Venta</button>
+                    <a asp-action="Index" class="btn btn-secondary">Volver Atras</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

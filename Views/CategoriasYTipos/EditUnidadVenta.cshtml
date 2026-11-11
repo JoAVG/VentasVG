@@ -1,0 +1,42 @@
+﻿@model VentasVG.Models.UnidadVenta
+
+@{
+    ViewData["Title"] = "Editar Unidad De Venta";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-3 shadow-sm p-4 border rounded">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="text-center text-dark"> Editar Unidad De Venta: </h2> <h3 class="text-center"> @Model.TipoUnidad </h3>
+            </div>
+            <hr />
+            <!--Aqui el formulario dice a donde enviara los datos metodo POST-->
+            <form asp-action="EditUnidadVenta">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!--ID enviado como campo-->
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="TipoUnidad" class="form-label">Tipo de Unidad</label>
+                    <input asp-for="TipoUnidad" class="form-control" />
+                    <span asp-validation-for="TipoUnidad" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <button type="submit" class="btn btn-success">Guardar Tipo de Unidad</button>
+                    <a asp-action="Index" class="btn btn-secondary">Volver Atras</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
